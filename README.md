@@ -8,6 +8,7 @@ The book is being written. [The syllabus](00-syllabus.md) fixes every session; t
 
 - **Online:** <https://sajad2025.github.io/book-qm/>.
 - **In the reader.** `index.html` is a single-page reader with a contents drawer grouped by Part, three page colours and adjustable text size. It loads the sessions from `sessions/` and their solutions from `solutions/`, renders the mathematics with KaTeX, and turns references such as "Session 7" into links. Each Part has a page with its goal and its toolkit: the results from earlier Parts that its sessions cite. "Save for offline" at the foot of the contents drawer downloads the syllabus and every written session, with solutions and fonts, so it reads without a connection.
+- **In Farsi.** The book is bilingual. The button on the home page, or «فا» in the top bar, switches the reader to the Farsi translation, right to left in the Vazirmatn font, with the formulas unchanged; «EN» switches back. The Farsi files are in `fa/`.
 - **On GitHub.** Every session is a plain Markdown file and renders directly on github.com, formulas included. Start with [the syllabus](00-syllabus.md), then [Session 1](sessions/001-orientation.md).
 
 ## Contents
@@ -68,14 +69,17 @@ python3 plan/check_sessions.py [N ...]     # check written sessions against the 
 python3 plan/build_book_json.py            # regenerate book.json after adding a session or solutions file
 ```
 
-After editing the session list, validate it and regenerate the syllabus, the writing plan and `book.json`:
+After editing the session list, validate it and regenerate the syllabus (English and Farsi), the writing plan and `book.json`:
 
 ```text
 python3 plan/validate.py plan/sessions.jsonl
 python3 plan/build_syllabus.py plan/sessions.jsonl plan/front-matter.md 00-syllabus.md
+python3 plan/build_syllabus.py plan/sessions.jsonl plan/fa/front-matter.md fa/00-syllabus.md --fa plan/fa.json
 python3 plan/build_plan.py plan/sessions.jsonl plan/writing-plan.tmpl.md 01-writing-plan.md
 python3 plan/build_book_json.py
 ```
+
+The Farsi translation follows [plan/fa/STYLE.md](plan/fa/STYLE.md), its conventions and glossary. Session n in Farsi is `fa/sessions/NNN-slug.md`, with its solutions in `fa/solutions/`; the Farsi titles, claims, Part goals and gap notes are in `plan/fa.json`. `python3 plan/check_fa.py [N ...]` checks each translation against its English source: the same formulas, sections, exercises and references.
 
 The reader shows a session as written only once `book.json` lists its file, so run `build_book_json.py` whenever a session or solutions file is added.
 
@@ -89,5 +93,6 @@ book.json               Parts and sessions used by the reader (generated)
 01-writing-plan.md      how a session is written (generated)
 sessions/NNN-slug.md    one Markdown file per session
 solutions/NNN-slug.md   the solutions to its exercises
+fa/                     the Farsi translation: 00-syllabus.md, sessions/, solutions/
 plan/                   the session list and the scripts that check it and build the files above
 ```

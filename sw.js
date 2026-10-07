@@ -17,7 +17,7 @@ const SHELL = [
 ];
 
 const CDN = [
-  'https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap',
+  'https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700&display=swap',
   'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css',
   'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js',
   'https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js',

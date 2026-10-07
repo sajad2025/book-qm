@@ -9,7 +9,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%232c5f7c' stroke-width='2.4'/%3E%3Cellipse cx='16' cy='16' rx='13' ry='4.6' fill='none' stroke='%232c5f7c' stroke-width='1.5'/%3E%3Ccircle cx='21.5' cy='8.6' r='2.9' fill='%232c5f7c'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <style>
   :root {
@@ -73,6 +73,7 @@
   @media (min-width: 1100px) {
     .scrim { display: none; }
     body.toc-open main { margin-left: var(--toc-w); }
+    [dir="rtl"] body.toc-open main { margin-left: 0; margin-right: var(--toc-w); }
   }
 
   /* session text */
@@ -80,7 +81,7 @@
   .prose h2 { font-size: 1.36rem; line-height: 1.3; font-weight: 600; margin: 2.3em 0 .6em; }
   .prose h3 { font-size: 1.1rem; font-weight: 600; margin: 1.8em 0 .4em; }
   .prose p { margin: 0 0 1.05em; }
-  .prose ul, .prose ol { padding-left: 1.4em; margin: 0 0 1.1em; }
+  .prose ul, .prose ol { padding-inline-start: 1.4em; margin: 0 0 1.1em; }
   .prose li { margin: .3em 0; }
   .prose strong { font-weight: 600; }
   .prose blockquote { margin: 1.4em 0; padding: .8rem 1rem; background: var(--surface); border-left: 3px solid var(--rule); border-radius: 0 8px 8px 0; }
@@ -91,8 +92,8 @@
   /* position: relative keeps KaTeX's absolutely positioned MathML inside the scroll box */
   .table-wrap { overflow-x: auto; margin: 0 0 1.4em; position: relative; }
   .prose table { border-collapse: collapse; width: 100%; font-size: .9rem; line-height: 1.45; }
-  .prose th { text-align: left; font-weight: 600; border-bottom: 1.5px solid var(--ink); padding: .4rem .7rem .4rem 0; }
-  .prose td { border-bottom: 1px solid var(--rule); padding: .45rem .7rem .45rem 0; vertical-align: top; }
+  .prose th { text-align: left; font-weight: 600; border-bottom: 1.5px solid var(--ink); padding-block: .4rem; padding-inline: 0 .7rem; }
+  .prose td { border-bottom: 1px solid var(--rule); padding-block: .45rem; padding-inline: 0 .7rem; vertical-align: top; }
   .prose p.fig { margin: 1.8em 0 .5em; text-align: center; }
   .prose p.fig img { max-width: 100%; height: auto; background: #fff; padding: .6rem; border-radius: 8px; border: 1px solid var(--rule); }
   .prose p.caption { font-size: .86rem; color: var(--muted); line-height: 1.5; margin: 0 auto 2em; max-width: 34rem; }
@@ -120,7 +121,7 @@
   .cover .sub { font-size: 1.15rem; color: var(--muted); margin: 0 0 1.6rem; font-style: italic; }
   .cover .lead { margin: 0 0 1.2rem; }
   .questions { list-style: none; padding: 0; margin: 0 0 1.9rem; border-left: 2px solid var(--rule); }
-  .questions li { display: grid; grid-template-columns: 2.4rem 1fr; padding: .15rem 0 .15rem .9rem; }
+  .questions li { display: grid; grid-template-columns: 2.4rem 1fr; padding-block: .15rem; padding-inline-start: .9rem; }
   .questions .q { color: var(--muted); font-variant-numeric: tabular-nums; }
   .start { display: inline-block; background: var(--accent); color: var(--on-accent); text-decoration: none; padding: .6rem 1.15rem; border-radius: 8px; font-weight: 600; margin: 0 .9rem .5rem 0; }
   .resume { display: inline-block; padding: .6rem 0; margin-right: .9rem; }
@@ -153,6 +154,23 @@
   .offline .meter { height: 5px; background: var(--rule); border-radius: 3px; overflow: hidden; }
   .offline .meter div { height: 100%; background: var(--accent); transition: width .2s; }
 
+  /* Farsi: right to left, Vazirmatn; formulas stay left to right */
+  :root[lang="fa"] { --serif: "Vazirmatn", Tahoma, sans-serif; }
+  :root[lang="fa"] body { line-height: 1.95; }
+  [dir="rtl"] .katex { direction: ltr; unicode-bidi: isolate; }
+  [dir="rtl"] .math-block { direction: ltr; text-align: center; }
+  [dir="rtl"] .prose ol { list-style-type: persian; }
+  [dir="rtl"] .toc { left: auto; right: 0; border-right: 0; border-left: 1px solid var(--rule); transform: translateX(102%); }
+  [dir="rtl"] body.toc-open .toc { transform: none; }
+  [dir="rtl"] .prose blockquote { border-left: 0; border-right: 3px solid var(--rule); border-radius: 8px 0 0 8px; }
+  [dir="rtl"] .prose th { text-align: right; }
+  [dir="rtl"] .pager .next { text-align: left; }
+  [dir="rtl"] .questions { border-left: 0; border-right: 2px solid var(--rule); }
+  .lang-btn { font-family: "Vazirmatn", var(--serif); }
+  .cover .switch { margin: 0 0 1.4rem; }
+  .cover .switch button { border: 1px solid var(--rule); border-radius: 8px; padding: .4rem .9rem; font-family: "Vazirmatn", var(--serif); }
+  .cover .switch button:hover { border-color: var(--accent); }
+  .notice.fallback { margin-bottom: 1.4rem; }
   @media (prefers-reduced-motion: reduce) { .toc, .scrim, main, .toc summary .pid::before { transition: none; } }
   @media print { .bar, .toc, .scrim, .pager, .after, .crumb { display: none !important; } main { padding: 0; margin: 0 !important; } }
 </style>
@@ -169,6 +187,7 @@
     <button class="swatch dark" data-theme="dark" aria-label="Dark page"></button>
   </span>
   <button class="swatch cycle" id="cycle" aria-label="Change page colour"></button>
+  <button class="tool lang-btn" id="langBtn"></button>
 </header>
 <nav class="toc" id="toc" aria-label="Contents"><div id="tocList"></div><section class="offline" id="offline" hidden></section></nav>
 <div class="scrim" id="scrim"></div>
@@ -221,6 +240,59 @@ function renderMarkdown(src) {
   function save(k, v) { try { localStorage.setItem("qm-book:" + k, v); } catch (e) {} }
   function load(k) { try { return localStorage.getItem("qm-book:" + k); } catch (e) { return null; } }
 
+  /* ---------- language ---------- */
+  // The language is a saved setting; switching it reloads the page, so the
+  // book's data, the interface and the files are always in one language.
+  var LANG = load("lang") === "fa" ? "fa" : "en";
+  var T = {
+    en: { contents: "Contents", syllabus: "Syllabus", about: "About this Part", notYet: "Not yet written", part: "Part",
+      session: "Session", sessions: "Sessions", sessionsHead: "Sessions", and: "and", of: "of", written: "written", prev: "Previous", next: "Next",
+      buildsOn: "Builds on", nothingEarlier: "Builds on nothing earlier.", claim: "Claim.", notWritten: "This session has not been written yet.",
+      solutionsLink: "Solutions to the exercises", solutions: "Solutions", solutionsTo: "Solutions to", backTo: "Back to",
+      solutionsNotYet: "The solutions to {s} have not been written yet.", gap: "labelled gap", notYetWritten: "not yet written",
+      toolkit: "Toolkit", toolkitNote: "The results from earlier Parts that this Part's sessions cite.", toolkitNone: "This Part uses nothing from earlier Parts.",
+      startWith: "Start with Session {n}", startSyllabus: "Start with the syllabus", continueWith: "Continue with {s}", aimed: "It is aimed at three questions:",
+      loading: "Loading {s}…", fallback: "", switchTo: "فا", switchLabel: "فارسی", switchCover: "خواندن به فارسی",
+      kinds: { definition: "Definition", theorem: "Theorem", construction: "Construction", calculation: "Calculation", example: "Example", experiment: "Experiment", survey: "Survey", problems: "Problems" },
+      noLibs: "The page could not load its formatting libraries, so this page is shown as plain text. Check the network connection and reload.",
+      offlineMissing: "<p><strong>You are offline, and this page has not been saved.</strong></p><p>When you are back online, open Contents and choose “Save for offline” to keep the book on this device.</p>",
+      notFound: "<p><strong>This page could not be loaded.</strong></p><p>The file <code>{f}</code> was not found or could not be read. If you opened <code>index.html</code> directly from disk, serve the folder instead: run <code>python -m http.server</code> in it and open <code>http://localhost:8000</code>.</p>",
+      bookMissing: "<p><strong>The book could not be loaded.</strong></p><p>The file <code>book.json</code> was not found or could not be read. If you opened <code>index.html</code> directly from disk, serve the folder instead: run <code>python -m http.server</code> in it and open <code>http://localhost:8000</code>.</p>",
+      offline: "Offline", checking: "Checking what is saved…", saving: "Saving…", savedWhat: "The syllabus, the {n} written sessions, their solutions and the fonts",
+      saved: "Saved. {w} work without a connection.", again: "Download again", partial: "{h} of {p} pages saved.", failed: " Some files did not download; check the connection.",
+      tryAgain: "Try again", saveRest: "Save the rest", saveHint: "Save the syllabus and every written session, with its solutions, to read without a connection.", saveBtn: "Save for offline" },
+    fa: { contents: "فهرست", syllabus: "برنامهٔ درس", about: "دربارهٔ این بخش", notYet: "هنوز نوشته نشده", part: "بخش",
+      session: "جلسهٔ", sessions: "جلسه‌های", sessionsHead: "جلسه‌ها", and: "و", of: "از", written: "نوشته شده", prev: "قبلی", next: "بعدی",
+      buildsOn: "بر پایهٔ", nothingEarlier: "بر پایهٔ هیچ جلسهٔ پیشین.", claim: "ادعا.", notWritten: "این جلسه هنوز نوشته نشده است.",
+      solutionsLink: "حل تمرین‌ها", solutions: "حل‌ها", solutionsTo: "حل تمرین‌های", backTo: "بازگشت به",
+      solutionsNotYet: "حل تمرین‌های {s} هنوز نوشته نشده است.", gap: "شکاف برچسب‌دار", notYetWritten: "هنوز نوشته نشده",
+      toolkit: "جعبه‌ابزار", toolkitNote: "نتیجه‌هایی از بخش‌های پیشین که جلسه‌های این بخش به آن‌ها استناد می‌کنند.", toolkitNone: "این بخش از بخش‌های پیشین چیزی به کار نمی‌برد.",
+      startWith: "شروع از جلسهٔ {n}", startSyllabus: "شروع از برنامهٔ درس", continueWith: "ادامه با {s}", aimed: "این درس به سه پرسش می‌پردازد:",
+      loading: "در حال بارگذاری {s}…", fallback: "این صفحه هنوز به فارسی ترجمه نشده است؛ متن انگلیسی آن در زیر آمده است.", switchTo: "EN", switchLabel: "English", switchCover: "Read in English",
+      kinds: { definition: "تعریف", theorem: "قضیه", construction: "ساخت", calculation: "محاسبه", example: "مثال", experiment: "آزمایش", survey: "مرور", problems: "مسئله‌ها" },
+      noLibs: "کتابخانه‌های قالب‌بندی بارگذاری نشدند و این صفحه به‌صورت متن ساده نمایش داده می‌شود. اتصال شبکه را بررسی و صفحه را دوباره بارگذاری کنید.",
+      offlineMissing: "<p><strong>شما آفلاین هستید و این صفحه ذخیره نشده است.</strong></p><p>وقتی دوباره آنلاین شدید، «فهرست» را باز کنید و «ذخیره برای خواندن آفلاین» را بزنید تا کتاب روی این دستگاه بماند.</p>",
+      notFound: "<p><strong>این صفحه بارگذاری نشد.</strong></p><p>پروندهٔ <code>{f}</code> پیدا یا خوانده نشد. اگر <code>index.html</code> را مستقیم از دیسک باز کرده‌اید، پوشه را با یک سرور باز کنید: در آن <code>python -m http.server</code> را اجرا کنید و <code>http://localhost:8000</code> را باز کنید.</p>",
+      bookMissing: "<p><strong>کتاب بارگذاری نشد.</strong></p><p>پروندهٔ <code>book.json</code> پیدا یا خوانده نشد. اگر <code>index.html</code> را مستقیم از دیسک باز کرده‌اید، پوشه را با یک سرور باز کنید: در آن <code>python -m http.server</code> را اجرا کنید و <code>http://localhost:8000</code> را باز کنید.</p>",
+      offline: "آفلاین", checking: "در حال بررسی آنچه ذخیره شده است…", saving: "در حال ذخیره…", savedWhat: "برنامهٔ درس، {n} جلسهٔ نوشته‌شده، حل‌های آن‌ها و قلم‌ها",
+      saved: "ذخیره شد. {w} بدون اتصال در دسترس‌اند.", again: "دریافت دوباره", partial: "{h} صفحه از {p} صفحه ذخیره شده است.", failed: " برخی پرونده‌ها دریافت نشدند؛ اتصال را بررسی کنید.",
+      tryAgain: "تلاش دوباره", saveRest: "ذخیرهٔ بقیه", saveHint: "برنامهٔ درس و همهٔ جلسه‌های نوشته‌شده را با حل‌هایشان برای خواندن بدون اتصال ذخیره کنید.", saveBtn: "ذخیره برای خواندن آفلاین" }
+  }[LANG];
+  function fmt(s, o) { return s.replace(/\{(\w+)\}/g, function (_, k) { return o[k]; }); }
+  function dig(x) { return LANG === "fa" ? String(x).replace(/[0-9]/g, function (d) { return "۰۱۲۳۴۵۶۷۸۹"[d]; }) : String(x); }
+  function toInt(d) { return parseInt(String(d).replace(/[۰-۹]/g, function (c) { return "۰۱۲۳۴۵۶۷۸۹".indexOf(c); }), 10); }
+  function setLang(l) { save("lang", l); location.reload(); }
+  document.documentElement.lang = LANG;
+  document.documentElement.dir = LANG === "fa" ? "rtl" : "ltr";
+  document.getElementById("tocBtn").textContent = T.contents;
+  var langBtn = document.getElementById("langBtn");
+  langBtn.textContent = T.switchTo;
+  langBtn.title = T.switchLabel;
+  langBtn.setAttribute("aria-label", T.switchLabel);
+  langBtn.onclick = function () { setLang(LANG === "fa" ? "en" : "fa"); };
+  // The arrow keys follow the reading direction.
+  var PREV_KEY = LANG === "fa" ? "ArrowRight" : "ArrowLeft";
+
   /* ---------- settings ---------- */
   function setTheme(t) {
     document.documentElement.setAttribute("data-theme", t);
@@ -261,7 +333,7 @@ function renderMarkdown(src) {
     if (e.key === "Escape" && !wide.matches) setToc(false);
     if (e.metaKey || e.ctrlKey || e.altKey || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
     if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-      var link = document.querySelector(e.key === "ArrowLeft" ? ".pager .prev" : ".pager .next");
+      var link = document.querySelector(e.key === PREV_KEY ? ".pager .prev" : ".pager .next");
       if (link) location.hash = link.getAttribute("href");
     }
   });
@@ -270,12 +342,13 @@ function renderMarkdown(src) {
   function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
   function session(n) { return book.sessions[n - 1] || null; }
   function partOf(id) { return book.parts[partIndex[id]] || null; }
-  function num(s) { return s.part + "." + s.n; }
+  function num(s) { return dig(s.part + "." + s.n); }
   function label(s) { return num(s) + ". " + s.title; }
   function longLabel(s) { return label(s); }
-  function partLabel(p) { return "Part " + p.id + ". " + p.title; }
-  function range(p) { return p.first === p.last ? "Session " + p.first : "Sessions " + p.first + "–" + p.last; }
-  function kindName(k) { return k.charAt(0).toUpperCase() + k.slice(1); }
+  function partLabel(p) { return T.part + " " + dig(p.id) + ". " + p.title; }
+  function range(p) { return p.first === p.last ? T.session + " " + dig(p.first) : T.sessions + " " + dig(p.first) + "–" + dig(p.last); }
+  function kindName(k) { return T.kinds[k] || k; }
+  var SYL = dig(0) + ". " + T.syllabus;
   function sessionHref(s) { return "#/s/" + s.slug; }
   // The nearest written session before or after n, or null.
   function prevWritten(n) { for (var i = written.length - 1; i >= 0; i--) if (written[i].n < n) return written[i]; return null; }
@@ -284,14 +357,14 @@ function renderMarkdown(src) {
   function writtenIn(p) { return partSessions(p).filter(function (s) { return s.file; }).length; }
 
   function buildToc() {
-    var html = '<ol class="top"><li><a href="#/syllabus" data-key="syllabus"><span class="n">0.</span><span>Syllabus</span></a></li></ol>';
+    var html = '<ol class="top"><li><a href="#/syllabus" data-key="syllabus"><span class="n">' + dig(0) + '.</span><span>' + T.syllabus + "</span></a></li></ol>";
     html += book.parts.map(function (p) {
-      return '<details data-part="' + esc(p.id) + '"><summary><span class="pid">' + esc(p.id) + '</span><span>' + esc(p.title) + "</span></summary><ol>" +
-        '<li><a href="#/part/' + esc(p.id) + '" data-key="part:' + esc(p.id) + '"><span class="n"></span><span>About this Part</span></a></li>' +
+      return '<details data-part="' + esc(p.id) + '"><summary><span class="pid">' + dig(p.id) + '</span><span>' + esc(p.title) + "</span></summary><ol>" +
+        '<li><a href="#/part/' + esc(p.id) + '" data-key="part:' + esc(p.id) + '">' + '<span class="n"></span><span>' + T.about + "</span></a></li>" +
         partSessions(p).map(function (s) {
           var inner = '<span class="n">' + num(s) + '.</span><span>' + esc(s.title) + "</span>";
           return s.file ? '<li><a href="' + sessionHref(s) + '" data-key="s:' + esc(s.slug) + '">' + inner + "</a></li>"
-                        : '<li><span class="off" title="Not yet written">' + inner + "</span></li>";
+                        : '<li><span class="off" title="' + T.notYet + '">' + inner + "</span></li>";
         }).join("") + "</ol></details>";
     }).join("");
     tocList.innerHTML = html;
@@ -312,30 +385,30 @@ function renderMarkdown(src) {
   }
 
   /* ---------- loading a Markdown file ---------- */
-  var NO_LIBS = '<p class="notice">The page could not load its formatting libraries, so this page is shown as plain text. Check the network connection and reload.</p>';
+  var NO_LIBS = '<p class="notice">' + T.noLibs + "</p>";
   function md(text) { return window.marked && window.katex ? renderMarkdown(text) : NO_LIBS + "<pre>" + esc(text) + "</pre>"; }
   function fetchFile(file, what, done) {
     var my = ++seq;
     if (cache[file] != null) { done(cache[file]); return; }
-    view.innerHTML = '<p style="color:var(--muted)">Loading ' + esc(what) + "…</p>";
+    view.innerHTML = '<p style="color:var(--muted)">' + esc(fmt(T.loading, { s: what })) + "</p>";
     fetch(file).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
       .then(function (t) { cache[file] = t; if (my === seq) done(t); })
       .catch(function () {
         if (my !== seq) return;
         if (!navigator.onLine) {
-          view.innerHTML = '<div class="notice"><p><strong>You are offline, and this page has not been saved.</strong></p><p>When you are back online, open Contents and choose “Save for offline” to keep the book on this device.</p></div>';
+          view.innerHTML = '<div class="notice">' + T.offlineMissing + "</div>";
           return;
         }
-        view.innerHTML = '<div class="notice"><p><strong>This page could not be loaded.</strong></p><p>The file <code>' + esc(file) + "</code> was not found or could not be read. If you opened <code>index.html</code> directly from disk, serve the folder instead: run <code>python -m http.server</code> in it and open <code>http://localhost:8000</code>.</p></div>";
+        view.innerHTML = '<div class="notice">' + fmt(T.notFound, { f: esc(file) }) + "</div>";
       });
   }
   function pagerLink(cls, href, text) {
-    return '<a class="' + cls + '" href="' + href + '"><small>' + (cls === "prev" ? "Previous" : "Next") + "</small>" + esc(text) + "</a>";
+    return '<a class="' + cls + '" href="' + href + '"><small>' + (cls === "prev" ? T.prev : T.next) + "</small>" + esc(text) + "</a>";
   }
   function pager(prev, next) { return '<nav class="pager" aria-label="Pages">' + (prev || "") + (next || "") + "</nav>"; }
   function prevOf(n) {
     var p = prevWritten(n);
-    return p ? pagerLink("prev", sessionHref(p), label(p)) : pagerLink("prev", "#/syllabus", "0. Syllabus");
+    return p ? pagerLink("prev", sessionHref(p), label(p)) : pagerLink("prev", "#/syllabus", SYL);
   }
   function nextOf(n) { var s = nextWritten(n); return s ? pagerLink("next", sessionHref(s), label(s)) : ""; }
 
@@ -365,7 +438,7 @@ function renderMarkdown(src) {
 
   // Relative links to sessions/NNN-slug.md and solutions/NNN-slug.md become
   // in-app routes; other relative links are resolved against the file's folder.
-  var FILE_LINK = /^(sessions|solutions)\/(\d{3})-([a-z0-9-]+)\.md$/;
+  var FILE_LINK = /^(?:fa\/)?(sessions|solutions)\/(\d{3})-([a-z0-9-]+)\.md$/;
   function rewriteLinks(dir) {
     var as = view.querySelectorAll(".prose a[href]");
     for (var i = 0; i < as.length; i++) {
@@ -374,7 +447,7 @@ function renderMarkdown(src) {
       var u = new URL(dir + href, "http://book.invalid/"), path = decodeURIComponent(u.pathname.slice(1));
       var m = FILE_LINK.exec(path), s = m && (bySlug[m[3]] || session(parseInt(m[2], 10)));
       if (s) as[i].setAttribute("href", (m[1] === "sessions" ? "#/s/" : "#/sol/") + s.slug);
-      else if (path === book.syllabus) as[i].setAttribute("href", "#/syllabus");
+      else if (/^(fa\/)?00-syllabus\.md$/.test(path)) as[i].setAttribute("href", "#/syllabus");
       else as[i].setAttribute("href", path + u.search + u.hash);
     }
   }
@@ -382,11 +455,13 @@ function renderMarkdown(src) {
   // "Session 7", "Sessions 3 and 4", "Sessions 3, 4 and 5", "Sessions 3-5":
   // each number that names a written session becomes a link. Text inside
   // KaTeX output, code, existing links and the page heading is left alone.
-  var REF = /\b(Sessions?)(\s+)(\d+(?:(?:\s*,\s*(?:(?:and|or)\s+)?|\s+(?:and|or|to)\s+|\s*[-–]\s*)\d+)*)(?!\d|\.\d)/g;
+  var REF = LANG === "fa"
+    ? /(جلسهٔ|جلسه‌های|جلسه)(\s+)([۰-۹]+(?:(?:\s*،\s*(?:و\s+)?|\s+(?:و|یا|تا)\s+|\s*[-–]\s*)[۰-۹]+)*)(?![۰-۹]|\.[۰-۹])/g
+    : /\b(Sessions?)(\s+)(\d+(?:(?:\s*,\s*(?:(?:and|or)\s+)?|\s+(?:and|or|to)\s+|\s*[-–]\s*)\d+)*)(?!\d|\.\d)/g;
   var SKIP = "a, code, pre, h1, .katex, .math-error, script, style";
   function refTarget(n, current) {
     if (n === current) return null;
-    if (n === 0) return { href: "#/syllabus", title: "Syllabus" };
+    if (n === 0) return { href: "#/syllabus", title: T.syllabus };
     var s = session(n);
     if (!s || !s.file) return null;
     return { href: sessionHref(s), title: longLabel(s) };
@@ -404,15 +479,15 @@ function renderMarkdown(src) {
       var text = tn.nodeValue, frag = document.createDocumentFragment(), last = 0, m, changed = false;
       REF.lastIndex = 0;
       while ((m = REF.exec(text))) {
-        var nums = m[3].split(/(\d+)/), single = nums.length === 3;
+        var nums = m[3].split(/([0-9۰-۹]+)/), single = nums.length === 3;
         frag.appendChild(document.createTextNode(text.slice(last, m.index)));
         if (single) {
-          var t = refTarget(parseInt(nums[1], 10), current);
+          var t = refTarget(toInt(nums[1]), current);
           if (t) { frag.appendChild(link(t, m[0])); changed = true; } else frag.appendChild(document.createTextNode(m[0]));
         } else {
           frag.appendChild(document.createTextNode(m[1] + m[2]));
           nums.forEach(function (piece, k) {
-            var t = k % 2 ? refTarget(parseInt(piece, 10), current) : null;
+            var t = k % 2 ? refTarget(toInt(piece), current) : null;
             if (t) { frag.appendChild(link(t, piece)); changed = true; } else if (piece) frag.appendChild(document.createTextNode(piece));
           });
         }
@@ -427,11 +502,11 @@ function renderMarkdown(src) {
     var rows = view.querySelectorAll(".prose tbody tr");
     for (var i = 0; i < rows.length; i++) {
       var td = rows[i].firstElementChild;
-      var m = td && /^\d+\.(\d+)$/.exec(td.textContent.trim());
+      var m = td && /^[0-9۰-۹]+\.([0-9۰-۹]+)$/.exec(td.textContent.trim());
       if (!m) continue;
       var table = rows[i].closest("table"), th = table && table.querySelector("th");
       if (!th || th.textContent.trim() !== "#") continue;
-      var s = session(parseInt(m[1], 10));
+      var s = session(toInt(m[1]));
       if (s && s.file) { var n = td.textContent.trim(); td.textContent = ""; td.appendChild(link({ href: sessionHref(s), title: longLabel(s) }, n)); }
     }
   }
@@ -441,10 +516,10 @@ function renderMarkdown(src) {
 
   function showSyllabus() {
     markCurrent("syllabus", null);
-    setChrome("0. Syllabus", "Syllabus");
+    setChrome(SYL, T.syllabus);
     fetchFile(book.syllabus, "the syllabus", function (text) {
       var first = written[0], next = first ? pagerLink("next", sessionHref(first), label(first)) : pagerLink("next", "#/part/" + book.parts[0].id, partLabel(book.parts[0]));
-      view.innerHTML = '<article class="prose">' + md(text) + "</article>" + pager("", next);
+      view.innerHTML = fallbackNote(book.syllabus) + '<article class="prose">' + md(text) + "</article>" + pager("", next);
       finish(book.syllabus, 0);
       linkSyllabusRows();
       window.scrollTo(0, 0);
@@ -459,17 +534,18 @@ function renderMarkdown(src) {
     setChrome(label(s), longLabel(s));
     if (!s.file) {
       ++seq;
-      var uses = s.uses.length ? " Builds on " + (s.uses.length > 1 ? "Sessions " + s.uses.slice(0, -1).join(", ") + " and " + s.uses[s.uses.length - 1] : "Session " + s.uses[0]) + "." : "";
+      var sep = LANG === "fa" ? "، " : ", ";
+      var uses = s.uses.length ? " " + T.buildsOn + " " + (s.uses.length > 1 ? T.sessions + " " + s.uses.slice(0, -1).map(dig).join(sep) + " " + T.and + " " + dig(s.uses[s.uses.length - 1]) : T.session + " " + dig(s.uses[0])) + "." : " " + T.nothingEarlier;
       view.innerHTML = crumb(p) + '<article class="prose"><h1>' + esc(longLabel(s)) + "</h1><p><em>" + esc(kindName(s.kind)) + "." + esc(uses) + "</em></p>" +
-        "<p><strong>Claim.</strong> " + esc(s.claim) + '</p><div class="notice"><p style="margin:0">This session has not been written yet.</p></div></article>' + pager(prevOf(s.n), nextOf(s.n));
+        "<p><strong>" + T.claim + "</strong> " + esc(s.claim) + '</p><div class="notice"><p style="margin:0">' + T.notWritten + "</p></div></article>" + pager(prevOf(s.n), nextOf(s.n));
       linkRefs(s.n);
       window.scrollTo(0, 0);
       return;
     }
     save("last", s.slug);
     fetchFile(s.file, label(s), function (text) {
-      var after = s.solutions ? '<p class="after"><a href="#/sol/' + esc(s.slug) + '">Solutions to the exercises</a></p>' : "";
-      view.innerHTML = crumb(p) + '<article class="prose">' + md(text) + "</article>" + after + pager(prevOf(s.n), nextOf(s.n));
+      var after = s.solutions ? '<p class="after"><a href="#/sol/' + esc(s.slug) + '">' + T.solutionsLink + "</a></p>" : "";
+      view.innerHTML = crumb(p) + fallbackNote(s.file) + '<article class="prose">' + md(text) + "</article>" + after + pager(prevOf(s.n), nextOf(s.n));
       finish(s.file, s.n);
       window.scrollTo(0, 0);
     });
@@ -477,24 +553,24 @@ function renderMarkdown(src) {
 
   function showSolutions(s) {
     markCurrent("s:" + s.slug, s.part);
-    setChrome(num(s) + ". Solutions", "Solutions to " + label(s));
-    var back = '<p class="crumb"><a href="' + sessionHref(s) + '">Back to ' + esc(longLabel(s)) + "</a></p>";
+    setChrome(num(s) + ". " + T.solutions, T.solutionsTo + " " + label(s));
+    var back = '<p class="crumb"><a href="' + sessionHref(s) + '">' + T.backTo + " " + esc(longLabel(s)) + "</a></p>";
     var nav = pager(pagerLink("prev", sessionHref(s), label(s)), nextOf(s.n));
     if (!s.solutions) {
       ++seq;
-      view.innerHTML = back + '<div class="notice"><p style="margin:0">The solutions to ' + esc(longLabel(s)) + " have not been written yet.</p></div>" + nav;
+      view.innerHTML = back + '<div class="notice"><p style="margin:0">' + esc(fmt(T.solutionsNotYet, { s: longLabel(s) })) + "</p></div>" + nav;
       window.scrollTo(0, 0);
       return;
     }
     fetchFile(s.solutions, "the solutions", function (text) {
-      view.innerHTML = back + '<article class="prose">' + md(text) + "</article>" + nav;
+      view.innerHTML = back + fallbackNote(s.solutions) + '<article class="prose">' + md(text) + "</article>" + nav;
       finish(s.solutions, -1); // here "Session N" for its own session links back to it
       window.scrollTo(0, 0);
     });
   }
 
   function sessionRow(s, withPart) {
-    var meta = (withPart ? "Part " + s.part + " · " : "") + kindName(s.kind) + (s.gap ? " · labelled gap" : "") + (s.file ? "" : " · not yet written");
+    var meta = (withPart ? T.part + " " + dig(s.part) + " · " : "") + kindName(s.kind) + (s.gap ? " · " + T.gap : "") + (s.file ? "" : " · " + T.notYetWritten);
     var inner = '<span class="n">' + num(s) + '</span><div><b>' + esc(s.title) + '</b><span class="meta">' + esc(meta) + '</span><span class="text">' + esc(s.claim) + "</span></div>";
     return s.file ? '<li><a href="' + sessionHref(s) + '">' + inner + "</a></li>" : '<li><div class="row off">' + inner + "</div></li>";
   }
@@ -503,20 +579,20 @@ function renderMarkdown(src) {
     ++seq;
     var pi = partIndex[p.id];
     markCurrent("part:" + p.id, p.id);
-    setChrome("Part " + p.id, partLabel(p));
+    setChrome(T.part + " " + dig(p.id), partLabel(p));
     var own = partSessions(p), cited = {};
     own.forEach(function (s) { s.uses.forEach(function (u) { var t = session(u); if (t && partIndex[t.part] < pi) cited[u] = t; }); });
     var tools = Object.keys(cited).map(Number).sort(function (a, b) { return a - b; }).map(function (n) { return cited[n]; });
     var k = writtenIn(p);
-    var prevPart = pi > 0 ? pagerLink("prev", "#/part/" + book.parts[pi - 1].id, partLabel(book.parts[pi - 1])) : pagerLink("prev", "#/syllabus", "0. Syllabus");
+    var prevPart = pi > 0 ? pagerLink("prev", "#/part/" + book.parts[pi - 1].id, partLabel(book.parts[pi - 1])) : pagerLink("prev", "#/syllabus", SYL);
     var nextPart = pi < book.parts.length - 1 ? pagerLink("next", "#/part/" + book.parts[pi + 1].id, partLabel(book.parts[pi + 1])) : "";
     view.innerHTML =
       '<section class="prose part"><h1>' + esc(partLabel(p)) + '</h1><p class="part-goal">' + esc(p.goal) + "</p>" +
-      '<p class="part-meta">' + esc(range(p)) + " · " + k + " of " + own.length + " written</p>" +
-      '<h2 class="section-h">Toolkit</h2>' +
-      (tools.length ? '<p class="section-note">The results from earlier Parts that this Part\'s sessions cite.</p><ol class="contents sessions">' + tools.map(function (s) { return sessionRow(s, true); }).join("") + "</ol>"
-                    : "<p>This Part uses nothing from earlier Parts.</p>") +
-      '<h2 class="section-h">Sessions</h2><ol class="contents sessions">' + own.map(function (s) { return sessionRow(s, false); }).join("") + "</ol></section>" +
+      '<p class="part-meta">' + esc(range(p)) + " · " + dig(k) + " " + T.of + " " + dig(own.length) + " " + T.written + "</p>" +
+      '<h2 class="section-h">' + T.toolkit + "</h2>" +
+      (tools.length ? '<p class="section-note">' + T.toolkitNote + '</p><ol class="contents sessions">' + tools.map(function (s) { return sessionRow(s, true); }).join("") + "</ol>"
+                    : "<p>" + T.toolkitNone + "</p>") +
+      '<h2 class="section-h">' + T.sessionsHead + '</h2><ol class="contents sessions">' + own.map(function (s) { return sessionRow(s, false); }).join("") + "</ol></section>" +
       pager(prevPart, nextPart);
     window.scrollTo(0, 0);
   }
@@ -526,22 +602,25 @@ function renderMarkdown(src) {
     markCurrent("", null);
     setChrome(book.title, "");
     var first = written[0], last = bySlug[load("last")];
-    var start = first ? '<a class="start" href="' + sessionHref(first) + '">Start with Session ' + first.n + "</a>"
-                      : '<a class="start" href="#/syllabus">Start with the syllabus</a>';
-    var resume = last && last.file && last !== first ? '<a class="resume" href="' + sessionHref(last) + '">Continue with ' + esc(longLabel(last)) + "</a>" : "";
+    var start = first ? '<a class="start" href="' + sessionHref(first) + '">' + fmt(T.startWith, { n: dig(first.n) }) + "</a>"
+                      : '<a class="start" href="#/syllabus">' + T.startSyllabus + "</a>";
+    var resume = last && last.file && last !== first ? '<a class="resume" href="' + sessionHref(last) + '">' + esc(fmt(T.continueWith, { s: longLabel(last) })) + "</a>" : "";
+    var other = LANG === "fa" ? "en" : "fa";
     view.innerHTML =
-      '<section class="cover"><h1>' + esc(book.title) + '</h1><p class="sub">' + esc(book.subtitle) + "</p>" +
+      '<section class="cover"><p class="switch"><button type="button" data-lang="' + other + '" lang="' + other + '" dir="' + (other === "fa" ? "rtl" : "ltr") + '">' + T.switchCover + "</button></p>" +
+      "<h1>" + esc(book.title) + '</h1><p class="sub">' + esc(book.subtitle) + "</p>" +
       '<p class="lead">' + esc(book.description) + "</p>" +
-      "<p>It is aimed at three questions:</p>" +
+      "<p>" + T.aimed + "</p>" +
       '<ol class="questions">' + book.questions.map(function (q, i) {
-        return '<li><span class="q">Q' + (i + 1) + "</span><span>" + esc(q.charAt(0).toUpperCase() + q.slice(1)) + "</span></li>";
+        return '<li><span class="q">Q' + (i + 1) + "</span><span>" + esc(LANG === "fa" ? q : q.charAt(0).toUpperCase() + q.slice(1)) + "</span></li>";
       }).join("") + "</ol>" +
-      '<p class="actions">' + start + resume + '<a class="syl" href="#/syllabus">0. Syllabus</a></p>' +
+      '<p class="actions">' + start + resume + '<a class="syl" href="#/syllabus">' + SYL + "</a></p>" +
       '<ol class="contents">' + book.parts.map(function (p) {
         var m = p.last - p.first + 1;
-        return '<li><a href="#/part/' + esc(p.id) + '"><span class="n">' + esc(p.id) + "</span><div><b>" + esc(p.title) + '</b><span class="meta">' +
-          esc(range(p)) + " · " + writtenIn(p) + " of " + m + ' written</span><span class="text">' + esc(p.goal) + "</span></div></a></li>";
+        return '<li><a href="#/part/' + esc(p.id) + '"><span class="n">' + dig(p.id) + "</span><div><b>" + esc(p.title) + '</b><span class="meta">' +
+          esc(range(p)) + " · " + dig(writtenIn(p)) + " " + T.of + " " + dig(m) + " " + T.written + '</span><span class="text">' + esc(p.goal) + "</span></div></a></li>";
       }).join("") + "</ol></section>";
+    view.querySelector(".switch button").onclick = function () { setLang(this.dataset.lang); };
     window.scrollTo(0, 0);
   }
 
@@ -553,7 +632,7 @@ function renderMarkdown(src) {
   // a stylesheet brings its fonts.
   var offline = document.getElementById("offline");
   var LIBS = [ // the same URLs as the <link> and <script> tags above
-    "https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap",
+    "https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700&display=swap",
     "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css",
     "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js",
     "https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"
@@ -631,13 +710,13 @@ function renderMarkdown(src) {
 
   function drawOffline() {
     var total = offlineItems().length, pages = pageCount(), n = written.length, html;
-    var what = n ? "The syllabus, the " + (n === 1 ? "written session" : n + " written sessions") + ", their solutions and the fonts" : "The syllabus and the fonts";
-    if (off.status === "checking") html = '<p class="hint">Checking what is saved…</p>';
-    else if (off.status === "saving") html = "<p>Saving… " + off.done + "/" + total + '</p><div class="meter"><div style="width:' + Math.round(100 * off.done / total) + '%"></div></div>';
-    else if (off.status === "done") html = "<p>Saved. " + what + " work without a connection.</p>" + '<button class="again" data-act="save">Download again</button>';
-    else if (off.status === "partial") html = "<p>" + off.have + " of " + pages + " pages saved." + (off.failed ? " Some files did not download; check the connection." : "") + "</p>" + '<button class="save" data-act="save">' + (off.failed ? "Try again" : "Save the rest") + "</button>";
-    else html = '<p class="hint">Save the syllabus and every written session, with its solutions, to read without a connection.</p><button class="save" data-act="save">Save for offline</button>';
-    offline.innerHTML = "<h2>Offline</h2>" + html;
+    var what = fmt(T.savedWhat, { n: dig(n) });
+    if (off.status === "checking") html = '<p class="hint">' + T.checking + "</p>";
+    else if (off.status === "saving") html = "<p>" + T.saving + " " + dig(off.done) + "/" + dig(total) + '</p><div class="meter"><div style="width:' + Math.round(100 * off.done / total) + '%"></div></div>';
+    else if (off.status === "done") html = "<p>" + fmt(T.saved, { w: what }) + "</p>" + '<button class="again" data-act="save">' + T.again + "</button>";
+    else if (off.status === "partial") html = "<p>" + fmt(T.partial, { h: dig(off.have), p: dig(pages) }) + (off.failed ? T.failed : "") + "</p>" + '<button class="save" data-act="save">' + (off.failed ? T.tryAgain : T.saveRest) + "</button>";
+    else html = '<p class="hint">' + T.saveHint + '</p><button class="save" data-act="save">' + T.saveBtn + "</button>";
+    offline.innerHTML = "<h2>" + T.offline + "</h2>" + html;
   }
   offline.addEventListener("click", function (e) {
     if (e.target.closest("[data-act=save]") && off.status !== "saving") saveOffline();
@@ -648,6 +727,25 @@ function renderMarkdown(src) {
     offline.hidden = false;
     drawOffline();
     checkOffline();
+  }
+
+  // In Farsi, each title, claim, goal and file is replaced by its Farsi
+  // version where one exists; an untranslated file is shown in English with
+  // a note (fallbackNote).
+  var english = {};
+  function localise(b) {
+    ["title", "subtitle", "description", "questions"].forEach(function (k) { if (b[k + "_fa"]) b[k] = b[k + "_fa"]; });
+    if (b.syllabus_fa) b.syllabus = b.syllabus_fa; else english[b.syllabus] = true;
+    b.parts.forEach(function (p) { if (p.title_fa) p.title = p.title_fa; if (p.goal_fa) p.goal = p.goal_fa; });
+    b.sessions.forEach(function (s) {
+      if (s.title_fa) s.title = s.title_fa;
+      if (s.claim_fa) s.claim = s.claim_fa;
+      if (s.file && s.file_fa) s.file = s.file_fa; else if (s.file) english[s.file] = true;
+      if (s.solutions && s.solutions_fa) s.solutions = s.solutions_fa; else if (s.solutions) english[s.solutions] = true;
+    });
+  }
+  function fallbackNote(file) {
+    return english[file] ? '<div class="notice fallback"><p style="margin:0">' + T.fallback + "</p></div>" : "";
   }
 
   /* ---------- routing ---------- */
@@ -663,12 +761,13 @@ function renderMarkdown(src) {
   fetch("book.json").then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function (b) {
       book = b;
+      if (LANG === "fa") localise(book);
       book.sessions.forEach(function (s) { bySlug[s.slug] = s; if (s.file) written.push(s); });
       book.parts.forEach(function (p, i) { partIndex[p.id] = i; });
       buildToc(); initOffline(); route(); window.addEventListener("hashchange", route);
     })
     .catch(function () {
-      view.innerHTML = '<div class="notice"><p><strong>The book could not be loaded.</strong></p><p>The file <code>book.json</code> was not found or could not be read. If you opened <code>index.html</code> directly from disk, serve the folder instead: run <code>python -m http.server</code> in it and open <code>http://localhost:8000</code>.</p></div>';
+      view.innerHTML = '<div class="notice">' + T.bookMissing + "</div>";
     });
 })();
 </script>
