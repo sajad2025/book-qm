@@ -1,4 +1,4 @@
-# Solutions to Session 4. The real numbers and the least-upper-bound property
+# Solutions to 1.4. The real numbers and the least-upper-bound property
 
 References such as 4.2(d) and 4.3(b) are to the field rules (Section 4.2) and order rules (Section 4.3) of Session 4. "The approximation property" is the lemma of Section 4.5, and "Corollary (a)" is part (a) of the corollary in Section 4.7.
 

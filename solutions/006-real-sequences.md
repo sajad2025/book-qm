@@ -1,4 +1,4 @@
-# Solutions to Session 6. Monotone sequences, subsequences and Cauchy sequences
+# Solutions to 1.6. Monotone sequences, subsequences and Cauchy sequences
 
 Each solution uses only Session 6 and Sessions 2 to 5, cited by number. Exercise 7 also uses the fact about $\mathbb{Q}$ granted in its statement.
 

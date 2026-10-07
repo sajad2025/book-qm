@@ -1,4 +1,4 @@
-# Solutions to Session 5. Limits of real sequences
+# Solutions to 1.5. Limits of real sequences
 
 Section numbers refer to Session 5.
 

@@ -1,4 +1,4 @@
-# Solutions to Session 9. Derivatives and the mean value theorem
+# Solutions to 1.9. Derivatives and the mean value theorem
 
 Theorem, lemma and corollary numbers refer to Session 9 unless another session is named.
 

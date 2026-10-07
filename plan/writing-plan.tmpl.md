@@ -23,7 +23,7 @@
 
 - **An opening page.** It states the Part's goal, then its toolkit: every result from an earlier Part that the Part's sessions use, each with its session number and its statement. The toolkit page is generated from the sessions' *Builds on* lists.
 - **The sessions,** in order.
-- **A problem set,** in every Part except XXVI. It combines the Part's results in new ways. Nothing later cites it.
+- **A problem set,** in every Part except 26. It combines the Part's results in new ways. Nothing later cites it.
 
 ## Rules of writing
 
@@ -55,7 +55,7 @@
 **Layout of a session file.**
 
 ```text
-# Session 5. Limits of real sequences
+# 1.5. Limits of real sequences
 
 *Theorem. Builds on Sessions 3 and 4.*
 
@@ -85,9 +85,9 @@
 Solutions: [solutions/005-limits-of-sequences.md](../solutions/005-limits-of-sequences.md).
 ```
 
-- **Headings.** Sessions are numbered without padding in headings and prose ("Session 5"), and sections as 5.1, 5.2 and so on.
+- **Headings.** A session's heading gives its Part and its number in the book, then its title: "# 1.5. Limits of real sequences" is Session 5, in Part 1. Session numbers run through the whole book, so prose refers to a session by its number alone ("Session 5"), and sections are numbered 5.1, 5.2 and so on. Parts are numbered 1 to 26.
 - **The kind line.** It repeats the kind from the syllabus, and its "Builds on" list repeats the syllabus's list for the session.
-- **The solutions file** opens with "# Solutions to Session 5. Limits of real sequences", then has the sections "## Check", "## Prove" and "## Extend". Each solution starts with the exercise's number in bold ("**4.**"), and parts are labelled (a), (b), (c). Every exercise is solved in full; a solution cites results as the text does and does not prove an earlier result again.
+- **The solutions file** opens with "# Solutions to 1.5. Limits of real sequences", then has the sections "## Check", "## Prove" and "## Extend". Each solution starts with the exercise's number in bold ("**4.**"), and parts are labelled (a), (b), (c). Every exercise is solved in full; a solution cites results as the text does and does not prove an earlier result again.
 - **References.** Refer to other sessions as "Session 7". The reader turns these into links, and `plan/check_sessions.py` checks that none points forward or outside the session's prerequisites.
 - **Statements and proofs.** Label statements inside a session in bold ("**Lemma.**", "**Theorem.**", "**Definition.**"). A proof opens with "*Proof.*" and ends with ∎.
 
@@ -98,7 +98,7 @@ Solutions: [solutions/005-limits-of-sequences.md](../solutions/005-limits-of-seq
 - **Dollar signs.** Never put a literal dollar sign in text.
 - **Brackets.** Write inner products and kets with `\langle`, `\rangle` and `\lvert`, `\rangle`.
 
-**Notation of Part I.**
+**Notation of Part 1.**
 - **Numbers.** $\mathbb{N} = \{1, 2, 3, \dots\}$. Write "n ≥ 0" explicitly when 0 is wanted. $\mathbb{Z}$, $\mathbb{Q}$ and $\mathbb{R}$ are the integers, rationals and reals.
 - **Intervals** are written $[a,b]$, $(a,b)$ and $[a,b)$.
 - **Sets.** Set-builder $\{x \in S : P(x)\}$. Subset $\subseteq$. The empty set $\emptyset$. Complement $A \setminus B$.

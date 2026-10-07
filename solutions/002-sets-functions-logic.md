@@ -1,4 +1,4 @@
-# Solutions to Session 2. Sets, functions and the forms of proof
+# Solutions to 1.2. Sets, functions and the forms of proof
 
 ## Check
 

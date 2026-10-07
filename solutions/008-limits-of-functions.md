@@ -1,4 +1,4 @@
-# Solutions to Session 8. Limits of functions at a point
+# Solutions to 1.8. Limits of functions at a point
 
 Section numbers such as "Section 8.4" refer to Session 8.
 

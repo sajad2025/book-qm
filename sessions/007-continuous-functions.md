@@ -1,4 +1,4 @@
-# Session 7. Continuous functions on an interval
+# 1.7. Continuous functions on an interval
 
 *Theorem. Builds on Session 6.*
 

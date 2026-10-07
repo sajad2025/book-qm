@@ -49,7 +49,7 @@
   .toc { position: fixed; z-index: 25; top: calc(var(--bar-h) + env(safe-area-inset-top, 0px)); bottom: 0; left: 0; width: min(var(--toc-w), 86vw); overflow-y: auto; background: var(--surface); border-right: 1px solid var(--rule); padding: 1rem .6rem calc(1.5rem + env(safe-area-inset-bottom, 0px)); transform: translateX(-102%); transition: transform .2s ease; }
   body.toc-open .toc { transform: none; }
   .toc ol { list-style: none; margin: 0; padding: 0; }
-  .toc a, .toc .off { display: grid; grid-template-columns: 2.3rem 1fr; gap: .2rem; padding: .42rem .55rem; border-radius: 6px; color: var(--ink); text-decoration: none; font-size: .9rem; line-height: 1.35; }
+  .toc a, .toc .off { display: grid; grid-template-columns: 3.2rem 1fr; gap: .2rem; padding: .42rem .55rem; border-radius: 6px; color: var(--ink); text-decoration: none; font-size: .9rem; line-height: 1.35; }
   .toc .n { color: var(--muted); font-variant-numeric: tabular-nums; }
   .toc .off { color: var(--muted); opacity: .62; cursor: default; }
   .toc a:hover { background: var(--paper); }
@@ -128,7 +128,7 @@
   .actions .syl { display: block; font-size: .92rem; }
   .contents { list-style: none; padding: 0; margin: 2.4rem 0 0; border-top: 1px solid var(--rule); }
   .contents li { border-bottom: 1px solid var(--rule); }
-  .contents a, .contents .row { display: grid; grid-template-columns: 3.2rem 1fr; padding: .75rem 0; text-decoration: none; color: var(--ink); }
+  .contents a, .contents .row { display: grid; grid-template-columns: 3.6rem 1fr; padding: .75rem 0; text-decoration: none; color: var(--ink); }
   .contents .n { color: var(--muted); font-variant-numeric: tabular-nums; }
   .contents b { font-weight: 600; display: block; line-height: 1.35; }
   .contents .meta { display: block; color: var(--muted); font-size: .8rem; line-height: 1.45; margin: .15rem 0 .2rem; font-variant-numeric: tabular-nums; }
@@ -270,8 +270,9 @@ function renderMarkdown(src) {
   function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
   function session(n) { return book.sessions[n - 1] || null; }
   function partOf(id) { return book.parts[partIndex[id]] || null; }
-  function label(s) { return s.n + ". " + s.title; }
-  function longLabel(s) { return "Session " + s.n + ". " + s.title; }
+  function num(s) { return s.part + "." + s.n; }
+  function label(s) { return num(s) + ". " + s.title; }
+  function longLabel(s) { return label(s); }
   function partLabel(p) { return "Part " + p.id + ". " + p.title; }
   function range(p) { return p.first === p.last ? "Session " + p.first : "Sessions " + p.first + "–" + p.last; }
   function kindName(k) { return k.charAt(0).toUpperCase() + k.slice(1); }
@@ -288,7 +289,7 @@ function renderMarkdown(src) {
       return '<details data-part="' + esc(p.id) + '"><summary><span class="pid">' + esc(p.id) + '</span><span>' + esc(p.title) + "</span></summary><ol>" +
         '<li><a href="#/part/' + esc(p.id) + '" data-key="part:' + esc(p.id) + '"><span class="n"></span><span>About this Part</span></a></li>' +
         partSessions(p).map(function (s) {
-          var inner = '<span class="n">' + s.n + '.</span><span>' + esc(s.title) + "</span>";
+          var inner = '<span class="n">' + num(s) + '.</span><span>' + esc(s.title) + "</span>";
           return s.file ? '<li><a href="' + sessionHref(s) + '" data-key="s:' + esc(s.slug) + '">' + inner + "</a></li>"
                         : '<li><span class="off" title="Not yet written">' + inner + "</span></li>";
         }).join("") + "</ol></details>";
@@ -426,10 +427,11 @@ function renderMarkdown(src) {
     var rows = view.querySelectorAll(".prose tbody tr");
     for (var i = 0; i < rows.length; i++) {
       var td = rows[i].firstElementChild;
-      if (!td || !/^\d+$/.test(td.textContent.trim())) continue;
+      var m = td && /^\d+\.(\d+)$/.exec(td.textContent.trim());
+      if (!m) continue;
       var table = rows[i].closest("table"), th = table && table.querySelector("th");
       if (!th || th.textContent.trim() !== "#") continue;
-      var s = session(parseInt(td.textContent, 10));
+      var s = session(parseInt(m[1], 10));
       if (s && s.file) { var n = td.textContent.trim(); td.textContent = ""; td.appendChild(link({ href: sessionHref(s), title: longLabel(s) }, n)); }
     }
   }
@@ -465,7 +467,7 @@ function renderMarkdown(src) {
       return;
     }
     save("last", s.slug);
-    fetchFile(s.file, "Session " + s.n, function (text) {
+    fetchFile(s.file, label(s), function (text) {
       var after = s.solutions ? '<p class="after"><a href="#/sol/' + esc(s.slug) + '">Solutions to the exercises</a></p>' : "";
       view.innerHTML = crumb(p) + '<article class="prose">' + md(text) + "</article>" + after + pager(prevOf(s.n), nextOf(s.n));
       finish(s.file, s.n);
@@ -475,7 +477,7 @@ function renderMarkdown(src) {
 
   function showSolutions(s) {
     markCurrent("s:" + s.slug, s.part);
-    setChrome(s.n + ". Solutions", "Solutions to Session " + s.n);
+    setChrome(num(s) + ". Solutions", "Solutions to " + label(s));
     var back = '<p class="crumb"><a href="' + sessionHref(s) + '">Back to ' + esc(longLabel(s)) + "</a></p>";
     var nav = pager(pagerLink("prev", sessionHref(s), label(s)), nextOf(s.n));
     if (!s.solutions) {
@@ -493,7 +495,7 @@ function renderMarkdown(src) {
 
   function sessionRow(s, withPart) {
     var meta = (withPart ? "Part " + s.part + " · " : "") + kindName(s.kind) + (s.gap ? " · labelled gap" : "") + (s.file ? "" : " · not yet written");
-    var inner = '<span class="n">' + s.n + '</span><div><b>' + esc(s.title) + '</b><span class="meta">' + esc(meta) + '</span><span class="text">' + esc(s.claim) + "</span></div>";
+    var inner = '<span class="n">' + num(s) + '</span><div><b>' + esc(s.title) + '</b><span class="meta">' + esc(meta) + '</span><span class="text">' + esc(s.claim) + "</span></div>";
     return s.file ? '<li><a href="' + sessionHref(s) + '">' + inner + "</a></li>" : '<li><div class="row off">' + inner + "</div></li>";
   }
 
@@ -534,7 +536,7 @@ function renderMarkdown(src) {
       '<ol class="questions">' + book.questions.map(function (q, i) {
         return '<li><span class="q">Q' + (i + 1) + "</span><span>" + esc(q.charAt(0).toUpperCase() + q.slice(1)) + "</span></li>";
       }).join("") + "</ol>" +
-      '<p class="actions">' + start + resume + '<a class="syl" href="#/syllabus">Session 0: the syllabus</a></p>' +
+      '<p class="actions">' + start + resume + '<a class="syl" href="#/syllabus">0. Syllabus</a></p>' +
       '<ol class="contents">' + book.parts.map(function (p) {
         var m = p.last - p.first + 1;
         return '<li><a href="#/part/' + esc(p.id) + '"><span class="n">' + esc(p.id) + "</span><div><b>" + esc(p.title) + '</b><span class="meta">' +

@@ -1,4 +1,4 @@
-# Session 3. Mathematical induction and finite sums
+# 1.3. Mathematical induction and finite sums
 
 *Theorem. Builds on Session 2.*
 

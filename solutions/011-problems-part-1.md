@@ -1,4 +1,4 @@
-# Solutions to Session 11. Problems for Part I
+# Solutions to 1.11. Problems for Part 1
 
 The solutions use the results of Sessions 2 to 10, cited by number. "Session 7 (Section 7.8)" refers to the corollary there, in the form recalled in Section 11.1: for $u, v \ge 0$ and $k \in \mathbb{N}$, $u^k \le v^k$ implies $u \le v$, and $u^k \lt v^k$ implies $u \lt v$.
 

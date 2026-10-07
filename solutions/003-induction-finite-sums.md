@@ -1,4 +1,4 @@
-# Solutions to Session 3. Mathematical induction and finite sums
+# Solutions to 1.3. Mathematical induction and finite sums
 
 References to (R), (R0), (S1)-(S7), (P1)-(P3) and Lemmas 1-5 are to Session 3. "Laws of powers (a)-(f)" refers to the Corollary of that name in Section 3.6, and "sums of constants" to the Corollary $\sum_{k=1}^{n} c = nc$ there. In particular $1^m = 1$ for every $m \ge 0$, by laws of powers (f).
 

@@ -14,32 +14,32 @@ The book is being written. [The syllabus](00-syllabus.md) fixes every session; t
 
 | Part | Sessions | |
 |---|---|---|
-| I | 1–11 | Sets, real numbers and limits |
-| II | 12–26 | Complex numbers, polynomials and groups |
-| III | 27–45 | Vector spaces and linear maps |
-| IV | 46–62 | Inner-product spaces |
-| V | 63–76 | Spectral theory |
-| VI | 77–88 | Finite probability |
-| VII | 89–105 | The postulates for a single system |
-| VIII | 106–124 | Integrals, Taylor's theorem and the analysis of operators |
-| IX | 125–136 | Dynamics of a closed system |
-| X | 137–148 | Positivity, singular values and the trace norm |
-| XI | 149–161 | Compactness and convexity in finite dimensions |
-| XII | 162–177 | Direct sums and tensor products |
-| XIII | 178–190 | Composite systems and density operators |
-| XIV | 191–199 | Reduced states, purification and entanglement |
-| XV | 200–208 | Entropy |
-| XVI | 209–220 | Probability II: concentration, Markov processes and densities |
-| XVII | 221–243 | General measurements and channels |
-| XVIII | 244–261 | Entanglement and information |
-| XIX | 262–294 | Measurement, disturbance and feedback (Q1) |
-| XX | 295–328 | Hidden variables and Bell's theorem (Q3) |
-| XXI | 329–342 | Bell experiments, loopholes and measurement dependence (Q3) |
-| XXII | 343–384 | Contextuality and the reality of the quantum state (Q3) |
-| XXIII | 385–400 | The measurement problem and decoherence (Q2) |
-| XXIV | 401–423 | Observers inside the system (Q2) |
-| XXV | 424–447 | Interpretations |
-| XXVI | 448–452 | The reader's own question |
+| 1 | 1–11 | Sets, real numbers and limits |
+| 2 | 12–26 | Complex numbers, polynomials and groups |
+| 3 | 27–45 | Vector spaces and linear maps |
+| 4 | 46–62 | Inner-product spaces |
+| 5 | 63–76 | Spectral theory |
+| 6 | 77–88 | Finite probability |
+| 7 | 89–105 | The postulates for a single system |
+| 8 | 106–124 | Integrals, Taylor's theorem and the analysis of operators |
+| 9 | 125–136 | Dynamics of a closed system |
+| 10 | 137–148 | Positivity, singular values and the trace norm |
+| 11 | 149–161 | Compactness and convexity in finite dimensions |
+| 12 | 162–177 | Direct sums and tensor products |
+| 13 | 178–190 | Composite systems and density operators |
+| 14 | 191–199 | Reduced states, purification and entanglement |
+| 15 | 200–208 | Entropy |
+| 16 | 209–220 | Probability 2: concentration, Markov processes and densities |
+| 17 | 221–243 | General measurements and channels |
+| 18 | 244–261 | Entanglement and information |
+| 19 | 262–294 | Measurement, disturbance and feedback (Q1) |
+| 20 | 295–328 | Hidden variables and Bell's theorem (Q3) |
+| 21 | 329–342 | Bell experiments, loopholes and measurement dependence (Q3) |
+| 22 | 343–384 | Contextuality and the reality of the quantum state (Q3) |
+| 23 | 385–400 | The measurement problem and decoherence (Q2) |
+| 24 | 401–423 | Observers inside the system (Q2) |
+| 25 | 424–447 | Interpretations |
+| 26 | 448–452 | The reader's own question |
 
 ## Preview locally
 

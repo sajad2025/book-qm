@@ -1,4 +1,4 @@
-# Session 0. Syllabus
+# 0. Syllabus
 
 **Quantum Mechanics from the Beginning: finite-dimensional quantum theory, from school mathematics to the foundations literature**
 
@@ -27,7 +27,7 @@ A reader who already knows a topic can skip its Part. A reader who does not will
 - **Everything cited, nothing forward.** Each session lists the earlier sessions whose results it uses, and nothing is used before it is established. Each Part opens with a toolkit page that restates the results from earlier Parts that its sessions use. A session gives its own short *Recall* only for a result that is not on its Part's page.
 - **Labels.** Each statement is marked as a definition, theorem, postulate, experimental result or interpretation, so the reader always knows which kind of claim is being made.
 - **Worked examples.** Every general result is computed on a small case, usually a qubit, two qubits or a qutrit. The examples in the mathematics Parts are the objects the physics later uses.
-- **Exercises.** Each session ends with exercises in three tiers: check, prove, extend. All are solvable from that session and earlier ones. Full solutions are in a separate volume, by Part. Each Part except XXVI ends with a problem set that nothing later depends on.
+- **Exercises.** Each session ends with exercises in three tiers: check, prove, extend. All are solvable from that session and earlier ones. Full solutions are in a separate volume, by Part. Each Part except 26 ends with a problem set that nothing later depends on.
 
 ## The three questions
 
@@ -37,7 +37,7 @@ The course is aimed at three questions, stated here in ordinary words:
 2. whether measurement can be done from outside a system (Q2);
 3. whether local realism could be true but unverifiable (Q3).
 
-None of them can be stated precisely until the formalism is built. Part XIX restates Q1 as statements about instruments, joint measurability, error-disturbance relations and conservation laws. Parts XX-XXII restate Q3 as statements about ontological models, Bell inequalities, measurement dependence and fine-tuning, contextuality and the reality of the quantum state. Parts XXIII-XXIV restate Q2 as statements about the Heisenberg cut, self-measurement and observers modelled as quantum systems. Part XXVI returns to the questions in these words.
+None of them can be stated precisely until the formalism is built. Part 19 restates Q1 as statements about instruments, joint measurability, error-disturbance relations and conservation laws. Parts 20-22 restate Q3 as statements about ontological models, Bell inequalities, measurement dependence and fine-tuning, contextuality and the reality of the quantum state. Parts 23-24 restate Q2 as statements about the Heisenberg cut, self-measurement and observers modelled as quantum systems. Part 26 returns to the questions in these words.
 
 ## Scope
 

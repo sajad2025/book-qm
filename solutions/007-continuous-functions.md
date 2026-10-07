@@ -1,4 +1,4 @@
-# Solutions to Session 7. Continuous functions on an interval
+# Solutions to 1.7. Continuous functions on an interval
 
 Section numbers such as 7.3 refer to the sections of Session 7.
 

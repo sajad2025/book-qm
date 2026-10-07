@@ -61,14 +61,14 @@ for p in parts:
     for s in p['sessions']:
         mark = ' ◊' if s['gap'].strip() else ''
         kind = KIND.get(s['kind'], s['kind'].capitalize())
-        o.append(f"| {s['n']} | {cell(s['title'])}{mark} | *{kind}.* {cell(s['establishes'])} | {runs([num[u] for u in s['uses']]) or '-'} |")
+        o.append(f"| {s['part']}.{s['n']} | {cell(s['title'])}{mark} | *{kind}.* {cell(s['establishes'])} | {runs([num[u] for u in s['uses']]) or '-'} |")
     o.append('')
 
 o.append('## Labelled gaps\n')
 o.append('Every result the book uses without a full proof is listed here, with what is omitted, why, and where a complete proof can be found. The same label appears in the session itself.\n')
 o.append('| Session | Gap |\n|---|---|')
 for s in gaps:
-    o.append(f"| {s['n']} {cell(s['title'])} | {cell(s['gap'])} |")
+    o.append(f"| {s['part']}.{s['n']} {cell(s['title'])} | {cell(s['gap'])} |")
 o.append('')
 
 o.append('## How the parts depend on each other\n')
@@ -77,7 +77,7 @@ o.append('| Part | Draws on |\n|---|---|')
 for p in parts:
     c = collections.Counter(part_of[u] for s in p['sessions'] for u in s['uses'] if part_of[u] != p['id'])
     order = [q['id'] for q in parts]
-    o.append(f"| {p['id']}. {cell(p['title'])} | {', '.join(f'{k} ({c[k]})' for k in sorted(c, key=order.index)) or '-'} |")
+    o.append(f"| {p['id']}. {cell(p['title'])} | {', '.join(f'Part {k} ({c[k]})' for k in sorted(c, key=order.index)) or '-'} |")
 o.append('')
 
 open(out, 'w', encoding='utf-8').write('\n'.join(o))

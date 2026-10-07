@@ -1,4 +1,4 @@
-# Session 4. The real numbers and the least-upper-bound property
+# 1.4. The real numbers and the least-upper-bound property
 
 *Definition. Builds on Sessions 2 and 3.*
 
@@ -182,7 +182,7 @@ $$
 \mathbb{Z} = \mathbb{N} \cup \{0\} \cup \{-n : n \in \mathbb{N}\}, \qquad \mathbb{Q} = \Bigl\{\frac{p}{q} : p \in \mathbb{Z},\ q \in \mathbb{N}\Bigr\}
 $$
 
-of $\mathbb{R}$. Each $q \in \mathbb{N}$ is positive by 4.6(b), so $q \ne 0$ by (O1), and $\frac{p}{q}$ is defined. Sums and products of natural numbers are natural numbers (Session 3, Section 3.3, Lemma 3). The corresponding facts for $\mathbb{Z}$ and $\mathbb{Q}$ are not proved in Part I; Section 4.9 states the one it assumes.
+of $\mathbb{R}$. Each $q \in \mathbb{N}$ is positive by 4.6(b), so $q \ne 0$ by (O1), and $\frac{p}{q}$ is defined. Sums and products of natural numbers are natural numbers (Session 3, Section 3.3, Lemma 3). The corresponding facts for $\mathbb{Z}$ and $\mathbb{Q}$ are not proved in Part 1; Section 4.9 states the one it assumes.
 
 ## 4.7 The Archimedean property
 

@@ -11,7 +11,10 @@ parts, sessions = [], []
 for line in (root / 'plan' / 'sessions.jsonl').read_text(encoding='utf-8').splitlines():
     if line.strip():
         o = json.loads(line)
-        (parts if o['type'] == 'part' else sessions).append(o)
+        if o['type'] == 'part':
+            parts.append(o)
+        else:
+            o['part'] = parts[-1]['id']; sessions.append(o)
 num = {s['slug']: i for i, s in enumerate(sessions, 1)}
 uses = {num[s['slug']]: {num[u] for u in s['uses']} for s in sessions}
 closure = {}
@@ -56,8 +59,9 @@ for n, s in enumerate(sessions, 1):
     def err(msg): errors.append(f'{n} {s["slug"]}: {msg}')
     def warn(msg): warnings.append(f'{n} {s["slug"]}: {msg}')
     nonempty = [l for l in lines if l.strip()]
-    if not nonempty or nonempty[0].strip() != f'# Session {n}. {s["title"]}':
-        err(f'first line must be "# Session {n}. {s["title"]}"')
+    label = f'{s["part"]}.{n}. {s["title"]}'
+    if not nonempty or nonempty[0].strip() != f'# {label}':
+        err(f'first line must be "# {label}"')
     kind_line = nonempty[1].strip() if len(nonempty) > 1 else ''
     m = re.fullmatch(r'\*(\w+)\. Builds on (.+)\.\*', kind_line)
     if not m:
@@ -89,8 +93,8 @@ for n, s in enumerate(sessions, 1):
     if '## Exercises' in text or '## Problems' in text:
         if not sol.exists():
             err(f'no solutions file {sol.relative_to(root)}')
-        elif sol.read_text(encoding='utf-8').splitlines()[0].strip() != f'# Solutions to Session {n}. {s["title"]}':
-            err('solutions file must start with "# Solutions to Session N. Title"')
+        elif sol.read_text(encoding='utf-8').splitlines()[0].strip() != f'# Solutions to {label}':
+            err(f'solutions file must start with "# Solutions to {label}"')
         if f'solutions/{n:03d}-{s["slug"]}.md' not in text:
             err('no link to the solutions file')
     has_gap = bool(s.get('gap', '').strip())

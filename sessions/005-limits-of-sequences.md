@@ -1,4 +1,4 @@
-# Session 5. Limits of real sequences
+# 1.5. Limits of real sequences
 
 *Theorem. Builds on Sessions 3 and 4.*
 

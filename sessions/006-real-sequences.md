@@ -1,4 +1,4 @@
-# Session 6. Monotone sequences, subsequences and Cauchy sequences
+# 1.6. Monotone sequences, subsequences and Cauchy sequences
 
 *Theorem. Builds on Session 5.*
 

@@ -1,4 +1,4 @@
-# Session 8. Limits of functions at a point
+# 1.8. Limits of functions at a point
 
 *Theorem. Builds on Sessions 5 and 7.*
 

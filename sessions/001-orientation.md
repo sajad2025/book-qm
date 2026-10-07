@@ -1,4 +1,4 @@
-# Session 1. What this book builds, and the three questions it is aimed at
+# 1.1. What this book builds, and the three questions it is aimed at
 
 *Survey. Builds on nothing earlier.*
 
@@ -24,45 +24,45 @@ The questions are taken in the order Q1, Q3, Q2, the order in which the book tre
 
 This section names objects that later Parts define. They are names only: no later proof uses them as premises from this session, and the reader is not expected to know what they mean yet. Each name comes with the Part that defines it or with a short gloss.
 
-**Q1.** To ask whether observation and action can be simultaneous, one must say what an observation does to the system observed and what counts as an action on it. In quantum mechanics both are described by one object, an instrument (Part XVII), which assigns to each outcome a probability and a change of the state. Since one instrument produces both the outcome and the change of state, "observation and action are simultaneous" can be read as "a single instrument produces both the outcome wanted and the change wanted". Q1 then becomes a set of questions about instruments: what their outcomes can reveal, and what changes of state must come with them. These questions need not have the same answer:
+**Q1.** To ask whether observation and action can be simultaneous, one must say what an observation does to the system observed and what counts as an action on it. In quantum mechanics both are described by one object, an instrument (Part 17), which assigns to each outcome a probability and a change of the state. Since one instrument produces both the outcome and the change of state, "observation and action are simultaneous" can be read as "a single instrument produces both the outcome wanted and the change wanted". Q1 then becomes a set of questions about instruments: what their outcomes can reveal, and what changes of state must come with them. These questions need not have the same answer:
 
-- whether two given observables (measurable quantities, Part VII) can be measured jointly;
+- whether two given observables (measurable quantities, Part 7) can be measured jointly;
 - how the error in measuring one quantity trades against the disturbance of another;
-- how much information can be gained about a state for a given change of it (Part XVIII);
+- how much information can be gained about a state for a given change of it (Part 18);
 - whether a measurement can leave the measured quantity unchanged;
 - what a conservation law forbids a measurement to do;
 - what feedback, an action chosen according to an outcome, can achieve.
 
-None of these can be asked before states and observables (Part VII), and instruments and channels (the most general changes of state, Part XVII), have been defined.
+None of these can be asked before states and observables (Part 7), and instruments and channels (the most general changes of state, Part 17), have been defined.
 
 **Q3.** "Local realism" joins two assumptions, and "unverifiable" needs a definition of its own.
 
-*Realism.* In the form the literature uses, realism says that a system has a state, its ontic state, which together with the measurement chosen fixes the probabilities of the outcomes. Its precise form is an ontological model (Part XX).
+*Realism.* In the form the literature uses, realism says that a system has a state, its ontic state, which together with the measurement chosen fixes the probabilities of the outcomes. Its precise form is an ontological model (Part 20).
 
-*Locality.* Locality says that an outcome in one place does not depend on a setting chosen so far away that no signal could connect them. Bell's local causality (Part XX) turns this into a condition on probabilities. A local model, defined in Part XX, needs only the probability of Part VI; what needs the formalism is the question whether such a model can reproduce what quantum mechanics predicts.
+*Locality.* Locality says that an outcome in one place does not depend on a setting chosen so far away that no signal could connect them. Bell's local causality (Part 20) turns this into a condition on probabilities. A local model, defined in Part 20, needs only the probability of Part 6; what needs the formalism is the question whether such a model can reproduce what quantum mechanics predicts.
 
-*Unverifiable.* Verifying needs an experiment, a statistical test of its data, and a list of the assumptions under which the test is valid. If an assumption of the test cannot itself be tested, the data cannot rule out a local realist model that breaks it. Measurement independence (Part XX) is such an assumption. It says that the distribution of the ontic state does not depend on the settings, and a theorem of Part XXI shows that without it a local model can reproduce every observed correlation.
+*Unverifiable.* Verifying needs an experiment, a statistical test of its data, and a list of the assumptions under which the test is valid. If an assumption of the test cannot itself be tested, the data cannot rule out a local realist model that breaks it. Measurement independence (Part 20) is such an assumption. It says that the distribution of the ontic state does not depend on the settings, and a theorem of Part 21 shows that without it a local model can reproduce every observed correlation.
 
-*Beyond locality.* Realism also raises questions that do not involve locality: whether an ontological model must let an outcome depend on which other quantities are measured with it (contextuality, the Kochen-Specker theorem), and whether its ontic state must determine the quantum state (the PBR theorem). Part XXII treats both, because a local model is one kind of ontological model, and these are further ways in which an ontological model can be ruled out. A third, macrorealism for a single system observed at several times, is the subject of the Leggett-Garg sessions in Part XIX.
+*Beyond locality.* Realism also raises questions that do not involve locality: whether an ontological model must let an outcome depend on which other quantities are measured with it (contextuality, the Kochen-Specker theorem), and whether its ontic state must determine the quantum state (the PBR theorem). Part 22 treats both, because a local model is one kind of ontological model, and these are further ways in which an ontological model can be ruled out. A third, macrorealism for a single system observed at several times, is the subject of the Leggett-Garg sessions in Part 19.
 
-Each of these compares a class of models with the predictions of quantum mechanics, for single systems and for systems of several parts. So none can be posed before states, observables and the Born rule (Part VII) and composite systems (Part XIII) have been built.
+Each of these compares a class of models with the predictions of quantum mechanics, for single systems and for systems of several parts. So none can be posed before states, observables and the Born rule (Part 7) and composite systems (Part 13) have been built.
 
-**Q2.** "Outside a system" presupposes a boundary between the system and the rest of the world. In the formalism, a measurement is an interaction between the system and an apparatus (Part XIX), and the apparatus can itself be described as a quantum system. The boundary between what is described as a quantum system and what is treated as the observer is the Heisenberg cut, defined in Part XXIII. Part XXIII shows that, in a chain of devices each of which records the outcome of the one before, the cut can be placed after any completed record without changing the predicted state of the chain. Q2 then asks what can be known when the observer, too, is placed inside the description. Its precise forms are the movability of the cut (Part XXIII) and the questions answered in Part XXIV by Breuer's theorem on measurement from inside, by the arguments of Frauchiger and Renner and of Brukner about observers modelled as quantum systems, by local friendliness, and by the dependence of a state on the quantum reference frame chosen. These need composite systems, the state of one part of a composite system (Part XIV), decoherence (Part XXIII), and the Bell scenarios of Part XX, in which two distant parties each choose a setting.
+**Q2.** "Outside a system" presupposes a boundary between the system and the rest of the world. In the formalism, a measurement is an interaction between the system and an apparatus (Part 19), and the apparatus can itself be described as a quantum system. The boundary between what is described as a quantum system and what is treated as the observer is the Heisenberg cut, defined in Part 23. Part 23 shows that, in a chain of devices each of which records the outcome of the one before, the cut can be placed after any completed record without changing the predicted state of the chain. Q2 then asks what can be known when the observer, too, is placed inside the description. Its precise forms are the movability of the cut (Part 23) and the questions answered in Part 24 by Breuer's theorem on measurement from inside, by the arguments of Frauchiger and Renner and of Brukner about observers modelled as quantum systems, by local friendliness, and by the dependence of a state on the quantum reference frame chosen. These need composite systems, the state of one part of a composite system (Part 14), decoherence (Part 23), and the Bell scenarios of Part 20, in which two distant parties each choose a setting.
 
 ## 1.3 Which Parts each question needs
 
 | Question | Main Parts | Where it is restated precisely |
 |---|---|---|
-| Q1 | XIX | at the end of Part XIX |
-| Q3 | XX, XXI and XXII | at the end of Part XXII |
-| Q2 | XXIII and XXIV | at the end of Part XXIV |
-| all three | XXVI | in Part XXVI, each informal word matched to a defined object |
+| Q1 | 19 | at the end of Part 19 |
+| Q3 | 20, 21 and 22 | at the end of Part 22 |
+| Q2 | 23 and 24 | at the end of Part 24 |
+| all three | 26 | in Part 26, each informal word matched to a defined object |
 
 Q1 comes first because it can be posed for a single system and the device that measures it, with no question of distance between systems. Q3 comes next because its central case, Bell's, needs two or more separated systems and the assumptions of an ontological model. Q2 comes last because some of its precise forms, such as local friendliness, are compared directly with the locality conditions of Q3.
 
 Each restatement is a list of precise statements, each with its assumptions.
 
-Parts I to XVIII build the formalism these Parts use; the question Parts also build on one another, and Q2 uses the Bell scenarios of Part XX. Parts I to VI are mathematics: limits, complex numbers and groups, linear algebra through the spectral theorem, and finite probability. The physics begins in Part VII with the postulates for a single system. After that, Parts of mathematics (VIII, X, XI, XII and XVI) come between Parts of physics, each placed before the first physics that uses it. The Parts of physics add dynamics, composite systems, entanglement, entropy, measurements and channels. Part XXV sets out the main interpretations.
+Parts 1 to 18 build the formalism these Parts use; the question Parts also build on one another, and Q2 uses the Bell scenarios of Part 20. Parts 1 to 6 are mathematics: limits, complex numbers and groups, linear algebra through the spectral theorem, and finite probability. The physics begins in Part 7 with the postulates for a single system. After that, Parts of mathematics (8, 10, 11, 12 and 16) come between Parts of physics, each placed before the first physics that uses it. The Parts of physics add dynamics, composite systems, entanglement, entropy, measurements and channels. Part 25 sets out the main interpretations.
 
 ## 1.4 How to use the book
 
@@ -72,7 +72,7 @@ Parts I to XVIII build the formalism these Parts use; the question Parts also bu
 - **A Part** opens with a page that lists every result from an earlier Part that its sessions use, each with its session number and statement. A reader who knows a topic can skip its Part and use that page to check what is assumed.
 - **Exercises** come in three tiers, *Check*, *Prove* and *Extend*, with full solutions in a separate volume. Those for this session are below.
 
-The next session begins the mathematics of Part I with sets, functions and the forms of proof.
+The next session begins the mathematics of Part 1 with sets, functions and the forms of proof.
 
 ## Exercises
 

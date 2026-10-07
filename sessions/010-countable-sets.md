@@ -1,4 +1,4 @@
-# Session 10. Countable sets
+# 1.10. Countable sets
 
 *Theorem. Builds on Sessions 3, 4, 6 and 7.*
 

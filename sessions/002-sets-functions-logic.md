@@ -1,4 +1,4 @@
-# Session 2. Sets, functions and the forms of proof
+# 1.2. Sets, functions and the forms of proof
 
 *Definition. Builds on Session 1.*
 
@@ -6,7 +6,7 @@
 
 Session 1 named the three questions the book is aimed at and the Parts each one needs. Every result on the way rests on proofs: chains of statements, each of which follows from earlier ones. This session fixes what a statement is, how to negate one, which chains of reasoning are valid, and the language of sets and functions in which every later session is written.
 
-**Numbers in this session.** The real numbers are defined by axioms later in Part I. Until then, some examples use integers and fractions with their school arithmetic: sums, products, and comparison by size, including the facts that "not $x \lt y$" means $x \ge y$ and "not $x \le y$" means $x \gt y$ (so, by Rule 1 of Section 2.2, "not $x \ge y$" means $x \lt y$ and "not $x \gt y$" means $x \le y$). These examples only illustrate the logic. No theorem of this session uses them, and no later proof cites them.
+**Numbers in this session.** The real numbers are defined by axioms later in Part 1. Until then, some examples use integers and fractions with their school arithmetic: sums, products, and comparison by size, including the facts that "not $x \lt y$" means $x \ge y$ and "not $x \le y$" means $x \gt y$ (so, by Rule 1 of Section 2.2, "not $x \ge y$" means $x \lt y$ and "not $x \gt y$" means $x \le y$). These examples only illustrate the logic. No theorem of this session uses them, and no later proof cites them.
 
 ## 2.1 Statements and connectives
 
@@ -428,7 +428,7 @@ $$
 L:\quad \forall \varepsilon \in \mathbb{Q} \text{ with } \varepsilon \gt 0\ \ \exists N \in \mathbb{N}\ \ \forall n \in \mathbb{N} \text{ with } n \ge N,\ \ \bigl(-\varepsilon \lt a_n \wedge a_n \lt \varepsilon\bigr).
 $$
 
-Statements of this shape define limits later in Part I. The negation sign moves from left to right, one quantifier at a time. Restrictions stay in place (Section 2.4). In the display, $\forall n \ge N$ abbreviates "for every $n \in \mathbb{N}$ with $n \ge N$", and from the second line on $\exists \varepsilon \gt 0$ abbreviates "there exists $\varepsilon \in \mathbb{Q}$ with $\varepsilon \gt 0$".
+Statements of this shape define limits later in Part 1. The negation sign moves from left to right, one quantifier at a time. Restrictions stay in place (Section 2.4). In the display, $\forall n \ge N$ abbreviates "for every $n \in \mathbb{N}$ with $n \ge N$", and from the second line on $\exists \varepsilon \gt 0$ abbreviates "there exists $\varepsilon \in \mathbb{Q}$ with $\varepsilon \gt 0$".
 
 $$
 \begin{aligned}

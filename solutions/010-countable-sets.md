@@ -1,4 +1,4 @@
-# Solutions to Session 10. Countable sets
+# Solutions to 1.10. Countable sets
 
 ## Check
 

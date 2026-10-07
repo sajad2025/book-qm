@@ -1,8 +1,8 @@
-# Session 11. Problems for Part I
+# 1.11. Problems for Part 1
 
 *Problems. Builds on Sessions 3, 9 and 10.*
 
-**Claim.** These are integrated problems on induction, limits, continuity, countable sets and the mean value theorem. Each one combines results from several sessions of Part I. Nothing later depends on them, and every problem is solved in full in the solutions volume.
+**Claim.** These are integrated problems on induction, limits, continuity, countable sets and the mean value theorem. Each one combines results from several sessions of Part 1. Nothing later depends on them, and every problem is solved in full in the solutions volume.
 
 ## 11.1 What the problems use
 
@@ -65,7 +65,7 @@ For $n \ge 2$, adding these inequalities for $k = 1, \dots, n-1$ ((S3) of Sessio
 
 ## Problems
 
-The problems are in three tiers. The *Check* problems are short and mostly computational; the *Prove* problems combine two or three results of Part I; the *Extend* problem is optional and goes a little further. A hint names a result only where finding it is not the point of the problem.
+The problems are in three tiers. The *Check* problems are short and mostly computational; the *Prove* problems combine two or three results of Part 1; the *Extend* problem is optional and goes a little further. A hint names a result only where finding it is not the point of the problem.
 
 *Check*
 
@@ -122,4 +122,4 @@ The problems are in three tiers. The *Check* problems are short and mostly compu
    (c) Deduce that $S_p(n)/n^{p+1} \to 1/(p+1)$.
    (d) Check (b) against the formula of Problem 1 for $p = 3$, both for $n = 10$ and for every $n$.
 
-Solutions: [solutions/011-problems-part-i.md](../solutions/011-problems-part-i.md).
+Solutions: [solutions/011-problems-part-1.md](../solutions/011-problems-part-1.md).

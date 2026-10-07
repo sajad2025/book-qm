@@ -1,4 +1,4 @@
-# Session 9. Derivatives and the mean value theorem
+# 1.9. Derivatives and the mean value theorem
 
 *Theorem. Builds on Sessions 7 and 8.*
 

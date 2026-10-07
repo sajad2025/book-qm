@@ -1,4 +1,4 @@
-# Solutions to Session 1. What this book builds, and the three questions it is aimed at
+# Solutions to 1.1. What this book builds, and the three questions it is aimed at
 
 ## Check
 
