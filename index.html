@@ -10,7 +10,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="vendor/katex-0.16.11/katex.min.css">
+<script>
+// Start loading the book's contents at once, in parallel with the libraries at
+// the end of the page, and set the reading direction before anything renders.
+(function () {
+  var fa = false;
+  try { fa = localStorage.getItem("qm-book:lang") === "fa"; } catch (e) {}
+  if (fa) { document.documentElement.lang = "fa"; document.documentElement.dir = "rtl"; }
+  window.BOOK = fetch(fa ? "fa/book.json" : "book.json").then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+})();
+</script>
 <style>
   :root {
     --fs: 19px;
@@ -171,6 +181,8 @@
   .cover .switch button { border: 1px solid var(--rule); border-radius: 8px; padding: .4rem .9rem; font-family: "Vazirmatn", var(--serif); }
   .cover .switch button:hover { border-color: var(--accent); }
   .notice.fallback { margin-bottom: 1.4rem; }
+  .loading { color: var(--muted); }
+  :root[lang="fa"] .loading [lang="en"], :root:not([lang="fa"]) .loading [lang="fa"] { display: none; }
   @media (prefers-reduced-motion: reduce) { .toc, .scrim, main, .toc summary .pid::before { transition: none; } }
   @media print { .bar, .toc, .scrim, .pager, .after, .crumb { display: none !important; } main { padding: 0; margin: 0 !important; } }
 </style>
@@ -191,10 +203,10 @@
 </header>
 <nav class="toc" id="toc" aria-label="Contents"><div id="tocList"></div><section class="offline" id="offline" hidden></section></nav>
 <div class="scrim" id="scrim"></div>
-<main id="main"><div class="col" id="view"></div></main>
+<main id="main"><div class="col" id="view"><p class="loading"><span lang="en">Loading…</span><span lang="fa">در حال بارگذاری…</span></p></div></main>
 
-<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="vendor/marked-12.0.2/marked.min.js"></script>
+<script src="vendor/katex-0.16.11/katex.min.js"></script>
 <script>
 /*RENDER-START*/
 function renderTex(src, display) {
@@ -633,15 +645,15 @@ function renderMarkdown(src) {
   var offline = document.getElementById("offline");
   var LIBS = [ // the same URLs as the <link> and <script> tags above
     "https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700&display=swap",
-    "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css",
-    "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js",
-    "https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"
+    "vendor/katex-0.16.11/katex.min.css",
+    "vendor/katex-0.16.11/katex.min.js",
+    "vendor/marked-12.0.2/marked.min.js"
   ];
   var FIGURE = /!\[[^\]]*\]\(([^)\s]+)/g, WOFF2 = /url\(["']?([^)"']+\.woff2)["']?\)/g;
   var off = { status: "checking", have: 0, done: 0, failed: 0 };
 
   function offlineItems() {
-    var items = ["./", "index.html", "book.json"].map(function (u) { return { url: u }; });
+    var items = ["./", "index.html", "book.json", "fa/book.json"].map(function (u) { return { url: u }; });
     items.push({ url: book.syllabus, page: true, deps: FIGURE });
     written.forEach(function (s) {
       items.push({ url: s.file, page: true, deps: FIGURE });
@@ -758,8 +770,7 @@ function renderMarkdown(src) {
     else if (parts[0] === "sol" && s) showSolutions(s);
     else showHome();
   }
-  fetch("book.json").then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function (b) {
+  window.BOOK.then(function (b) {
       book = b;
       if (LANG === "fa") localise(book);
       book.sessions.forEach(function (s) { bySlug[s.slug] = s; if (s.file) written.push(s); });

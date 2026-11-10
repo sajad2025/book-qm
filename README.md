@@ -88,11 +88,12 @@ The reader shows a session as written only once `book.json` lists its file, so r
 ```text
 index.html              the reader
 sw.js                   service worker for offline reading
-book.json               Parts and sessions used by the reader (generated)
+book.json               Parts and sessions used by the reader (generated; fa/book.json is the Farsi one)
 00-syllabus.md          Session 0: every session's claim and prerequisites (generated)
 01-writing-plan.md      how a session is written (generated)
 sessions/NNN-slug.md    one Markdown file per session
 solutions/NNN-slug.md   the solutions to its exercises
 fa/                     the Farsi translation: 00-syllabus.md, sessions/, solutions/
+vendor/                 KaTeX and marked, served with the book so it needs no CDN
 plan/                   the session list and the scripts that check it and build the files above
 ```

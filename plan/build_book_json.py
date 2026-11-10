@@ -55,7 +55,32 @@ book = {
     **({'syllabus_fa': 'fa/00-syllabus.md'} if (root / 'fa' / '00-syllabus.md').exists() else {}),
     'parts': parts, 'sessions': out_sessions,
 }
-(root / 'book.json').write_text(json.dumps(book, ensure_ascii=False, indent=0) + '\n', encoding='utf-8')
+# Two files, so that a reader loads only its own language: book.json without the
+# Farsi fields, and fa/book.json with them (the reader falls back to English
+# wherever a Farsi field is missing).
+def strip_fa(o):
+    if isinstance(o, dict):
+        return {k: strip_fa(v) for k, v in o.items() if not k.endswith('_fa')}
+    if isinstance(o, list):
+        return [strip_fa(v) for v in o]
+    return o
+compact = dict(ensure_ascii=False, separators=(',', ':'))
+(root / 'book.json').write_text(json.dumps(strip_fa(book), **compact) + '\n', encoding='utf-8')
+(root / 'fa').mkdir(exist_ok=True)
+TEXT = ('title', 'subtitle', 'description', 'questions', 'goal', 'claim')
+def to_fa(o):
+    # Each text field takes its Farsi value where there is one; file paths keep
+    # both languages, for the English fallback.
+    if isinstance(o, list):
+        return [to_fa(v) for v in o]
+    if not isinstance(o, dict):
+        return o
+    out = {k: to_fa(v) for k, v in o.items() if not (k.endswith('_fa') and k[:-3] in TEXT)}
+    for k in TEXT:
+        if o.get(k + '_fa'):
+            out[k] = o[k + '_fa']
+    return out
+(root / 'fa' / 'book.json').write_text(json.dumps(to_fa(book), **compact) + '\n', encoding='utf-8')
 written = sum(1 for s in out_sessions if s['file'])
 translated = sum(1 for s in out_sessions if s.get('file_fa'))
 print(f'book.json: {len(parts)} parts, {len(out_sessions)} sessions, {written} written, {translated} in Farsi')
